@@ -12,8 +12,12 @@ function writeDescriptionOutput(operation, userInput, intialValue) {
 }
 
 function calculate(calculationType) {
+
   const userNumber = getUserNumber();
   const intialResult = currentResult;
+  if(calculationType!=="+"&&calculationType!=="-"&&calculationType!=="*"&&calculationType!=="/"||!userNumber){
+    return;
+  }
   if (calculationType == "+") {
     currentResult = currentResult + userNumber;
   } else if (calculationType == "-") {
