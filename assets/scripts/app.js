@@ -11,6 +11,22 @@ function writeDescriptionOutput(operation, userInput, intialValue) {
   outputResult(currentResult, descripton);
 }
 
+function calculate(calculationType) {
+  const userNumber = getUserNumber();
+  const intialResult = currentResult;
+  if (calculationType == "+") {
+    currentResult = currentResult + userNumber;
+  } else if (calculationType == "-") {
+    currentResult = currentResult - userNumber;
+  } else if (calculationType == "*") {
+    currentResult = currentResult * userNumber;
+  } else if (calculationType == "/") {
+    currentResult = currentResult / userNumber;
+  }
+  writeDescriptionOutput(calculationType, userNumber, intialResult);
+  logHistory(calculationType, userNumber, intialResult, currentResult);
+}
+
 function logHistory(operation, userInput, intialValue, finalResult) {
   const descripton = `${intialValue} ${operation} ${userInput}`;
   outputResult(currentResult, descripton);
@@ -25,35 +41,19 @@ function logHistory(operation, userInput, intialValue, finalResult) {
 }
 
 function add() {
-  const userNumber = getUserNumber();
-  const intialResult = currentResult;
-  currentResult = currentResult + userNumber;
-  writeDescriptionOutput("+", userNumber, intialResult);
-  logHistory("+",userNumber,intialResult,currentResult);
+  calculate("+");
 }
 
 function subtact() {
-  const userNumber = getUserNumber();
-  const intialResult = currentResult;
-  currentResult = currentResult - userNumber;
-  writeDescriptionOutput("-", userNumber, intialResult);
-  logHistory("-",userNumber,intialResult,currentResult);
+  calculate("-");
 }
 
 function multiply() {
-  const userNumber = getUserNumber();
-  const intialResult = currentResult;
-  currentResult = currentResult * userNumber;
-  writeDescriptionOutput("*", userNumber, intialResult);
-  logHistory("*",userNumber,intialResult,currentResult);
+  calculate("*");
 }
 
 function divide() {
-  const userNumber = getUserNumber();
-  const intialResult = currentResult;
-  currentResult = currentResult / userNumber;
-  writeDescriptionOutput("/", userNumber, intialResult);
-  logHistory("/",userNumber,intialResult,currentResult);
+  calculate("/");
 }
 
 addBtn.addEventListener("click", add);
